@@ -1,0 +1,28 @@
+.search-input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(238, 238, 238, 1);
+  border-radius: 12px;
+  padding: 4px;
+  width: 100%;
+  max-width: 268px;
+  height: 48px;
+}
+
+.search-input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  padding: 6px 8px;
+  margin-left: 4px;
+  border-radius: 12px;
+  background-color: transparent;
+  color: rgba(0, 0, 0, 1);
+  font-size: 16px;
+  font-weight: 400;
+
+  &::placeholder {
+    font-size: 12px;
+  }
+}
