@@ -1,4 +1,4 @@
-import { Suspense, useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useFetchPhotos } from '../../hooks/useFetchPhotos'
 import { SearchInput } from '../../components/common/SearchInput'
 import { Button } from '../../components/common/Button'
@@ -16,7 +16,7 @@ export const ImageFinderPage: React.FC = () => {
   const { dataImages, error, searchPhotos, loading } = useFetchPhotos()
 
   const galleryRef = useRef<HTMLDivElement | null>(null)
-  
+
   useScrollToTop(statusQuery)
 
   const handleSearch = async () => {
