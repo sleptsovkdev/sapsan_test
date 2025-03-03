@@ -6,8 +6,14 @@
   border-radius: 12px;
   padding: 4px;
   width: 100%;
-  max-width: 268px;
+  max-width: 420px;
   height: 48px;
+  transition: background-color 0.3s, transform 0.3s;
+  
+  &:hover {
+    background-color: rgba(230, 230, 230, 1);
+
+  }
 }
 
 .search-input {
@@ -21,6 +27,7 @@
   color: rgba(0, 0, 0, 1);
   font-size: 16px;
   font-weight: 400;
+  cursor: pointer;
 
   &::placeholder {
     font-size: 12px;
