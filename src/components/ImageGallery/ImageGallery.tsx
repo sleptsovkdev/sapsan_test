@@ -1,19 +1,21 @@
 import React, { useState } from 'react'
 import styles from './ImageGallery.module.scss'
 import { Button } from '../common/Button'
-import ClearIcon from '../../assets/icons/ClearIcon'
+import CloseIcon from '../../assets/icons/CloseIcon'
 
 interface ImageGalleryProps {
   images: string[]
   error: string | null
+  statusQuery: boolean
 }
 
-export const ImageGallery: React.FC<ImageGalleryProps> = ({
+export const ImageGallery = ({
+  ref,
   images,
   error,
-}) => {
+  statusQuery,
+}: ImageGalleryProps & { ref?: React.RefObject<HTMLDivElement | null> }) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
-
   const openImage = (url: string) => {
     setSelectedImage(url)
   }
@@ -29,9 +31,11 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
   } else if (!images.length) {
     statusMessage = <p>К сожалению, поиск не дал результатов</p>
   }
-
+  if (!statusQuery) return
   return (
-    <div className={styles['image-gallery']}>
+    <div
+      className={`${styles['image-gallery']} ${statusMessage ? styles.error : ''}`}
+      ref={ref}>
       {statusMessage && (
         <div className={styles['status-message']}>{statusMessage}</div>
       )}
@@ -60,7 +64,7 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
             />
             <Button
               onClick={closeImage}
-              icon={<ClearIcon />}
+              icon={<CloseIcon />}
               className={styles['close-button']}
             />
           </div>
