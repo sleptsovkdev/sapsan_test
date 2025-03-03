@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react'
+import React, { useState } from 'react'
 import styles from './SearchInput.module.scss'
 import SearchIcon from '../../../assets/icons/SearchIcon'
 import ClearIcon from '../../../assets/icons/ClearIcon'
