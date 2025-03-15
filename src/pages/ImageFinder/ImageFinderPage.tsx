@@ -46,28 +46,28 @@ export const ImageFinderPage: React.FC = () => {
     }
   }, [dataImages.totalPages, page, loading, searchPhotos, query])
 
-  const checkIfGalleryVisible = useCallback(() => {
-    if (galleryRef.current) {
-      const rect = galleryRef.current.getBoundingClientRect()
-      const isVisible = window.innerHeight > rect.bottom
-      if (isVisible) {
-        loadMoreImages()
-      }
-    }
-  }, [loadMoreImages])
+  // const checkIfGalleryVisible = useCallback(() => {
+  //   if (galleryRef.current) {
+  //     const rect = galleryRef.current.getBoundingClientRect()
+  //     const isVisible = window.innerHeight > rect.bottom
+  //     if (isVisible) {
+  //       loadMoreImages()
+  //     }
+  //   }
+  // }, [loadMoreImages])
 
-  useEffect(() => {
-    if (statusQuery && !loading) {
-      checkIfGalleryVisible()
-    }
-  }, [statusQuery, loading, checkIfGalleryVisible])
+  // useEffect(() => {
+  //   if (statusQuery && !loading) {
+  //     checkIfGalleryVisible()
+  //   }
+  // }, [statusQuery, loading, checkIfGalleryVisible])
 
   const handleScroll = useCallback(() => {
     const scrollY = window.scrollY
     const windowHeight = window.innerHeight
     const documentHeight = document.documentElement.scrollHeight
 
-    if (scrollY + windowHeight >= documentHeight - 10 && !loading) {
+    if (scrollY + windowHeight >= documentHeight - 200 && !loading) {
       loadMoreImages()
     }
   }, [loadMoreImages, loading])

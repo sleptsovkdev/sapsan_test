@@ -26,6 +26,7 @@ export const useFetchPhotos = () => {
             client_id: CLIENT_ID,
             query: query,
             page: page,
+            per_page: 30
           },
         })
 
