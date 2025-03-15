@@ -4,7 +4,7 @@
   justify-content: space-between;
   background-color: rgba(238, 238, 238, 1);
   border-radius: 12px;
-  padding: 4px;
+  padding: 8px;
   width: 100%;
   max-width: 420px;
   height: 48px;
@@ -28,8 +28,4 @@
   font-size: 16px;
   font-weight: 400;
   cursor: pointer;
-
-  &::placeholder {
-    font-size: 12px;
-  }
 }
