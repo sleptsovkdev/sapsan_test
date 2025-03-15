@@ -42,25 +42,25 @@ export const ImageFinderPage: React.FC = () => {
   const loadMoreImages = useCallback(async () => {
     if (dataImages.totalPages && page < dataImages.totalPages && !loading) {
       setPage((prevPage) => prevPage + 1)
-      await searchPhotos(query, page + 1)
+      await searchPhotos(query, page + 1, 20)
     }
   }, [dataImages.totalPages, page, loading, searchPhotos, query])
 
-  // const checkIfGalleryVisible = useCallback(() => {
-  //   if (galleryRef.current) {
-  //     const rect = galleryRef.current.getBoundingClientRect()
-  //     const isVisible = window.innerHeight > rect.bottom
-  //     if (isVisible) {
-  //       loadMoreImages()
-  //     }
-  //   }
-  // }, [loadMoreImages])
+  const checkIfGalleryVisible = useCallback(() => {
+    if (galleryRef.current) {
+      const rect = galleryRef.current.getBoundingClientRect()
+      const isVisible = window.innerHeight > rect.bottom
+      if (isVisible) {
+        loadMoreImages()
+      }
+    }
+  }, [loadMoreImages])
 
-  // useEffect(() => {
-  //   if (statusQuery && !loading) {
-  //     checkIfGalleryVisible()
-  //   }
-  // }, [statusQuery, loading, checkIfGalleryVisible])
+  useEffect(() => {
+    if (statusQuery && !loading) {
+      checkIfGalleryVisible()
+    }
+  }, [statusQuery, loading, checkIfGalleryVisible])
 
   const handleScroll = useCallback(() => {
     const scrollY = window.scrollY
@@ -80,7 +80,7 @@ export const ImageFinderPage: React.FC = () => {
   }, [handleScroll])
 
   return (
-    <div className={`${styles['imageFinderContainer']}`}>
+    <div className={`${styles['imageFinderContainer']} ${statusQuery ? styles.searching : ''}`}>
       <div
         className={`${styles['searchWrapperPanele']} ${statusQuery ? styles.searching : ''}`}>
         <div
