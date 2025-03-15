@@ -16,7 +16,7 @@ export const useFetchPhotos = () => {
   const [error, setError] = useState<string | null>(null)
 
   const searchPhotos = useCallback(
-    async (query: string, page: number) => {
+    async (query: string, page: number, perPage?: number) => {
       if (loading) return
       setLoading(true)
       setError(null)
@@ -26,7 +26,7 @@ export const useFetchPhotos = () => {
             client_id: CLIENT_ID,
             query: query,
             page: page,
-            per_page: 30
+            per_page: perPage || 30
           },
         })
 
